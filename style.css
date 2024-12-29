@@ -1,0 +1,52 @@
+html > body .stqrs--root {
+  position: absolute;
+  inset: 0;
+  z-index: 50000;
+}
+html > body .stqrs--root .stqrs--wrapper {
+  display: flex;
+  position: absolute;
+  bottom: calc(100vh - var(--y) * 1px);
+  left: calc(var(--x) * 1px);
+  max-height: calc(var(--y) * 1px - 1vh);
+  max-width: calc(100vw - var(--x) * 1px - 1vw);
+}
+html > body .stqrs--root .stqrs--sets {
+  overflow: auto;
+  margin: 0;
+}
+html > body .stqrs--root .stqrs--sets .stqrs--set {
+  display: flex;
+  gap: 0.5em;
+  cursor: default;
+}
+html > body .stqrs--root .stqrs--sets .stqrs--set .stqrs--toggle {
+  color: #bd362f;
+  transition: 200ms;
+  margin: 0;
+}
+html > body .stqrs--root .stqrs--sets .stqrs--set .stqrs--toggle.stqrs--active {
+  color: #51a351;
+}
+html > body .stqrs--root .stqrs--qrs {
+  overflow: auto;
+  margin: 0;
+}
+html > body .stqrs--root .stqrs--qrs .stqrs--qr {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  cursor: default;
+}
+html > body .stqrs--root .stqrs--qrs .stqrs--qr .stqrs--label {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 0.25em;
+  align-items: center;
+}
+html > body .stqrs--root .stqrs--qrs .stqrs--qr .stqrs--label .stqrs--text {
+  min-width: 100px;
+}
+html > body .stqrs--root .stqrs--qrs .stqrs--qr .menu_button {
+  margin: 0;
+}

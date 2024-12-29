@@ -1,0 +1,60 @@
+html > body .stqrs--root {
+    position: absolute;
+    inset: 0;
+    z-index: 50000;
+
+    .stqrs--wrapper {
+        display: flex;
+
+        position: absolute;
+        bottom: calc(100vh - var(--y) * 1px);
+        left: calc(var(--x) * 1px);
+        max-height: calc(var(--y) * 1px - 1vh);
+        max-width: calc(100vw - var(--x) * 1px - 1vw);
+    }
+
+    .stqrs--sets {
+        overflow: auto;
+        margin: 0;
+        .stqrs--set {
+            display: flex;
+            gap: 0.5em;
+            cursor: default;
+
+            .stqrs--toggle {
+                color: rgb(189 54 47);
+                transition: 200ms;
+                margin: 0;
+                &.stqrs--active {
+                    color: rgb(81 163 81);
+                }
+            }
+        }
+    }
+    .stqrs--qrs {
+        overflow: auto;
+        margin: 0;
+        .stqrs--qr {
+            display: flex;
+            gap: 0.5em;
+            align-items: center;
+            cursor: default;
+
+            .stqrs--label {
+                flex: 1 1 auto;
+
+                display: flex;
+                gap: 0.25em;
+                align-items: center;
+
+                .stqrs--text {
+                    min-width: 100px;
+                }
+            }
+
+            .menu_button {
+                margin: 0;
+            }
+        }
+    }
+}
