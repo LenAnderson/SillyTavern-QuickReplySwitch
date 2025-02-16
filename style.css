@@ -38,6 +38,16 @@ html > body .stqrs--root .stqrs--qrs .stqrs--qr {
   align-items: center;
   cursor: default;
 }
+html > body .stqrs--root .stqrs--qrs .stqrs--qr.stqrs--title {
+  justify-content: center;
+  font-size: small;
+  opacity: 0.75;
+  font-weight: bold;
+}
+html > body .stqrs--root .stqrs--qrs .stqrs--qr.stqrs--adder {
+  justify-content: center;
+  border-bottom: 3px solid var(--SmartThemeBorderColor);
+}
 html > body .stqrs--root .stqrs--qrs .stqrs--qr .stqrs--label {
   flex: 1 1 auto;
   display: flex;

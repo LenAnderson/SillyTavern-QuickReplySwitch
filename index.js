@@ -1,4 +1,5 @@
 import { event_types, eventSource } from '../../../../script.js';
+import { Popup, POPUP_RESULT } from '../../../popup.js';
 import { quickReplyApi } from '../../quick-reply/index.js';
 import { QuickReplySet } from '../../quick-reply/src/QuickReplySet.js';
 
@@ -50,6 +51,36 @@ const showMenu = (evt = null)=>{
                             if (currentSet == qrs) return;
                             currentSet = qrs;
                             dom.qrList.innerHTML = '';
+                            const title = document.createElement('li'); {
+                                title.classList.add('stqrs--qr');
+                                title.classList.add('stqrs--title');
+                                title.textContent = qrs.name;
+                                dom.qrList.append(title);
+                            }
+                            const adder = document.createElement('li'); {
+                                adder.classList.add('stqrs--qr');
+                                adder.classList.add('stqrs--adder');
+                                adder.classList.add('list-group-item');
+                                const btn = document.createElement('div'); {
+                                    btn.classList.add('menu_button');
+                                    btn.classList.add('menu_button_icon');
+                                    btn.addEventListener('click', ()=>{
+                                        hideMenu();
+                                        const qr = quickReplyApi.createQuickReply(qrs.name, '');
+                                        qr.showEditor();
+                                    });
+                                    const i = document.createElement('i'); {
+                                        i.classList.add('fa-solid', 'fa-fw', 'fa-plus');
+                                        btn.append(i);
+                                    }
+                                    const lbl = document.createElement('span'); {
+                                        lbl.textContent = 'Add Quick Reply';
+                                        btn.append(lbl);
+                                    }
+                                    adder.append(btn);
+                                }
+                                dom.qrList.append(adder);
+                            }
                             for (const qr of qrs.qrList) {
                                 const item = document.createElement('li'); {
                                     item.classList.add('stqrs--qr');
@@ -92,6 +123,20 @@ const showMenu = (evt = null)=>{
                                             qr.onUpdate();
                                         });
                                         item.append(hide);
+                                    }
+                                    const del = document.createElement('div'); {
+                                        del.classList.add('menu_button');
+                                        del.classList.add('fa-solid', 'fa-fw');
+                                        del.classList.add('fa-trash-can');
+                                        del.title = 'Delete Quick Reply';
+                                        del.addEventListener('click', async()=>{
+                                            const confirmed = await Popup.show.confirm('Delete QR?', `${qrs.name} > ${qr.label}`);
+                                            if (confirmed  == POPUP_RESULT.AFFIRMATIVE) {
+                                                qr.delete();
+                                                item.remove();
+                                            }
+                                        });
+                                        item.append(del);
                                     }
                                     const run = document.createElement('div'); {
                                         run.classList.add('menu_button');
