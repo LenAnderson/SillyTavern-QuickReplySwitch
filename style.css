@@ -15,6 +15,7 @@ html > body .stqrs--root .stqrs--sets {
   overflow: auto;
   margin: 0;
   align-self: end;
+  max-height: calc(var(--y) * 1px - 1vh);
 }
 html > body .stqrs--root .stqrs--sets .stqrs--set {
   display: flex;
